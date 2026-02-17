@@ -4,7 +4,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDG04yYgOuoSOPpLOERVKjvP3HQUBBOUX8",
+  apiKey: "AIzaSyXXXXXXXXXXXXX",
   authDomain: "prepvault-22769.firebaseapp.com",
   projectId: "prepvault-22769",
   storageBucket: "prepvault-22769.firebasestorage.app",
@@ -17,3 +17,4 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
+
