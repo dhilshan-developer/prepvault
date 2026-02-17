@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepVault — Study Material & PDF Repository</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-text">Prep<em>Vault</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="pages/exams.html">Exams</a></li>
+      <li><a href="pages/materials.html">Materials</a></li>
+      <li><a href="pages/notifications.html">Notifications</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="pages/login.html" class="btn-ghost">Login</a>
+      <a href="pages/register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="pages/exams.html">Exams</a>
+    <a href="pages/materials.html">Materials</a>
+    <a href="pages/notifications.html">Notifications</a>
+    <a href="pages/login.html">Login</a>
+    <a href="pages/register.html">Register</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      India's #1 Competitive Exam Repository
+    </div>
+    <h1 class="hero-title">
+      Your Gateway to<br>
+      <em>Exam Success</em>
+    </h1>
+    <p class="hero-sub">Centralized study materials, PDFs, question papers & notifications for TNPSC, UPSC, TANCET, CAT, GATE, SSC, RRB and more.</p>
+    <div class="hero-cta">
+      <a href="pages/register.html" class="btn-primary btn-lg">Start for Free</a>
+      <a href="pages/materials.html" class="btn-outline btn-lg">Browse Materials</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">50K+</span><span class="stat-l">Study PDFs</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-n">20+</span><span class="stat-l">Exams Covered</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-n">2L+</span><span class="stat-l">Aspirants</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="floating-card fc-1">
+      <div class="fc-icon">📄</div>
+      <div class="fc-text"><b>UPSC 2024</b><br>GS Paper I</div>
+    </div>
+    <div class="floating-card fc-2">
+      <div class="fc-icon">🔔</div>
+      <div class="fc-text"><b>TNPSC Group 2</b><br>Notification Out</div>
+    </div>
+    <div class="floating-card fc-3">
+      <div class="fc-icon">✅</div>
+      <div class="fc-text"><b>GATE 2025</b><br>Syllabus Updated</div>
+    </div>
+    <div class="hero-card-main">
+      <div class="hcm-header">
+        <span class="hcm-logo">⬡ PrepVault</span>
+        <span class="hcm-live">● LIVE</span>
+      </div>
+      <div class="hcm-exams">
+        <span class="exam-chip">TNPSC</span>
+        <span class="exam-chip">UPSC</span>
+        <span class="exam-chip">CAT</span>
+        <span class="exam-chip">GATE</span>
+        <span class="exam-chip active-chip">SSC</span>
+        <span class="exam-chip">RRB</span>
+      </div>
+      <div class="hcm-row"><span>📥 PDFs downloaded today</span><b>1,284</b></div>
+      <div class="hcm-row"><span>📚 New materials added</span><b>38</b></div>
+      <div class="hcm-row"><span>🔔 Notifications</span><b>7 new</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMS SECTION -->
+<section class="section exams-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Exams We Cover</span>
+      <h2>One Platform,<br>All Major Exams</h2>
+    </div>
+    <div class="exams-grid">
+      <a href="pages/exams.html" class="exam-card" style="--ec:#f97316">
+        <div class="ec-abbr">TNPSC</div>
+        <div class="ec-full">Tamil Nadu Public Service Commission</div>
+        <div class="ec-count">3,200+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#3b82f6">
+        <div class="ec-abbr">UPSC</div>
+        <div class="ec-full">Union Public Service Commission</div>
+        <div class="ec-count">5,800+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#10b981">
+        <div class="ec-abbr">TANCET</div>
+        <div class="ec-full">Tamil Nadu Common Entrance Test</div>
+        <div class="ec-count">1,400+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#8b5cf6">
+        <div class="ec-abbr">CAT</div>
+        <div class="ec-full">Common Admission Test</div>
+        <div class="ec-count">2,100+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#ec4899">
+        <div class="ec-abbr">GATE</div>
+        <div class="ec-full">Graduate Aptitude Test in Engineering</div>
+        <div class="ec-count">4,600+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#14b8a6">
+        <div class="ec-abbr">SSC</div>
+        <div class="ec-full">Staff Selection Commission</div>
+        <div class="ec-count">3,900+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card" style="--ec:#f59e0b">
+        <div class="ec-abbr">RRB</div>
+        <div class="ec-full">Railway Recruitment Board</div>
+        <div class="ec-count">2,700+ PDFs</div>
+      </a>
+      <a href="pages/exams.html" class="exam-card ec-more">
+        <div class="ec-abbr">+13</div>
+        <div class="ec-full">More Exams</div>
+        <div class="ec-count">View All →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Features</span>
+      <h2>Everything You Need<br>to Crack the Exam</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#f97316">📥</div>
+        <h3>Download PDFs</h3>
+        <p>Access and download notes, question papers, model tests, and syllabus guides instantly.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#3b82f6">🔍</div>
+        <h3>Smart Search & Filter</h3>
+        <p>Find materials by exam, subject, year, or topic with lightning-fast search and smart filters.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#10b981">🔖</div>
+        <h3>Bookmark & Save</h3>
+        <p>Bookmark your favorite materials, build personal study lists, and access them anytime.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#8b5cf6">🔔</div>
+        <h3>Exam Notifications</h3>
+        <p>Stay updated with exam notifications, admit cards, results, and important date alerts.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#ec4899">🔐</div>
+        <h3>Secure Authentication</h3>
+        <p>JWT-based secure login & signup with Firebase Authentication keeps your account safe.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="--fi:#14b8a6">☁️</div>
+        <h3>Cloud Storage</h3>
+        <p>Firebase-powered cloud storage ensures fast delivery and 99.9% uptime for all materials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-orb"></div>
+      <h2>Ready to Ace Your Exam?</h2>
+      <p>Join 2 lakh+ aspirants who trust PrepVault for their exam preparation.</p>
+      <a href="pages/register.html" class="btn-primary btn-lg">Create Free Account</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand-footer">
+          <span class="brand-icon">⬡</span>
+          <span class="brand-text">Prep<em>Vault</em></span>
+        </a>
+        <p>India's centralized study material repository for competitive exam aspirants.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Exams</h4>
+        <a href="pages/exams.html">TNPSC</a>
+        <a href="pages/exams.html">UPSC</a>
+        <a href="pages/exams.html">GATE</a>
+        <a href="pages/exams.html">SSC / RRB</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="pages/materials.html">Study Notes</a>
+        <a href="pages/materials.html">Question Papers</a>
+        <a href="pages/materials.html">Model Tests</a>
+        <a href="pages/notifications.html">Notifications</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="pages/register.html">Register</a>
+        <a href="pages/login.html">Login</a>
+        <a href="pages/dashboard.html">Dashboard</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 PrepVault. Built with HTML · TypeScript · Tailwind CSS · Firebase</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

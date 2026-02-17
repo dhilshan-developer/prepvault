@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Materials — PrepVault</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-icon">⬡</span><span class="brand-text">Prep<em>Vault</em></span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="exams.html">Exams</a></li>
+      <li><a href="materials.html" class="active">Materials</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a><a href="exams.html">Exams</a>
+    <a href="materials.html">Materials</a><a href="notifications.html">Notifications</a>
+    <a href="login.html">Login</a><a href="register.html">Register</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Study Materials</h1>
+    <p>Download PDFs, notes, question papers and model tests for all major exams.</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by exam, subject, topic, year..." id="matSearch" onkeyup="filterMaterials()">
+      <button onclick="filterMaterials()">Search</button>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--bg); padding-top:40px;">
+  <div class="container">
+
+    <div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+
+      <!-- Sidebar Filters -->
+      <aside style="min-width:220px; flex-shrink:0;">
+        <div class="filter-box">
+          <h4>Exam</h4>
+          <div class="filter-checks" id="examFilter">
+            <label><input type="checkbox" checked onchange="filterMaterials()"> All Exams</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="tnpsc"> TNPSC</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="upsc"> UPSC</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="gate"> GATE</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="cat"> CAT</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="ssc"> SSC</label>
+            <label><input type="checkbox" onchange="filterMaterials()" data-exam="rrb"> RRB</label>
+          </div>
+        </div>
+        <div class="filter-box">
+          <h4>Type</h4>
+          <div class="filter-checks">
+            <label><input type="radio" name="mtype" checked onchange="filterMaterials()"> All Types</label>
+            <label><input type="radio" name="mtype" value="notes" onchange="filterMaterials()"> Study Notes</label>
+            <label><input type="radio" name="mtype" value="qp" onchange="filterMaterials()"> Question Papers</label>
+            <label><input type="radio" name="mtype" value="model" onchange="filterMaterials()"> Model Tests</label>
+            <label><input type="radio" name="mtype" value="syllabus" onchange="filterMaterials()"> Syllabus</label>
+          </div>
+        </div>
+        <div class="filter-box">
+          <h4>Sort By</h4>
+          <select style="width:100%; padding:10px 12px; border:2px solid var(--border); border-radius:10px; font-family:inherit; font-size:13px; outline:none;" onchange="filterMaterials()">
+            <option>Most Downloaded</option>
+            <option>Newest First</option>
+            <option>Oldest First</option>
+            <option>A–Z</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Materials Grid -->
+      <div style="flex:1; min-width:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+          <p style="color:var(--text2); font-size:14px;"><b id="countDisplay">12</b> materials found</p>
+          <div style="display:flex; gap:8px;">
+            <button class="view-btn active" onclick="setView('grid', this)">⊞ Grid</button>
+            <button class="view-btn" onclick="setView('list', this)">☰ List</button>
+          </div>
+        </div>
+
+        <div class="materials-grid" id="materialsGrid">
+
+          <div class="material-card" data-exam="tnpsc" data-type="qp" data-text="tnpsc group 2 general studies">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(249,115,22,0.1)">📄</div>
+              <div class="mc-info">
+                <h4>TNPSC Group 2 — General Studies</h4>
+                <div class="mc-meta">Previous Year Paper · 2023</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">TNPSC</span>
+              <span class="mc-tag">Group 2</span>
+              <span class="mc-tag">Question Paper</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 4,218 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="upsc" data-type="notes" data-text="upsc gs paper 1 notes history">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(59,130,246,0.1)">📘</div>
+              <div class="mc-info">
+                <h4>UPSC GS Paper 1 — History Notes</h4>
+                <div class="mc-meta">Study Notes · Comprehensive</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">UPSC</span>
+              <span class="mc-tag">History</span>
+              <span class="mc-tag">Notes</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 8,924 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="gate" data-type="model" data-text="gate cse data structures model test">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(236,72,153,0.1)">📝</div>
+              <div class="mc-info">
+                <h4>GATE CSE — Data Structures Mock Test</h4>
+                <div class="mc-meta">Model Test · 65 Questions</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">GATE</span>
+              <span class="mc-tag">CSE</span>
+              <span class="mc-tag">Model Test</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 3,102 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="cat" data-type="qp" data-text="cat quant verbal question paper 2022">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(139,92,246,0.1)">📋</div>
+              <div class="mc-info">
+                <h4>CAT 2022 — Official Question Paper</h4>
+                <div class="mc-meta">Previous Year Paper · 2022</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">CAT</span>
+              <span class="mc-tag">Quant</span>
+              <span class="mc-tag">DILR</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 12,440 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="ssc" data-type="notes" data-text="ssc cgl general awareness notes">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(20,184,166,0.1)">📗</div>
+              <div class="mc-info">
+                <h4>SSC CGL — General Awareness Notes</h4>
+                <div class="mc-meta">Study Notes · 180 Pages</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">SSC</span>
+              <span class="mc-tag">CGL</span>
+              <span class="mc-tag">GK</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 6,750 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="rrb" data-type="syllabus" data-text="rrb ntpc syllabus 2024">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(245,158,11,0.1)">📑</div>
+              <div class="mc-info">
+                <h4>RRB NTPC — Official Syllabus 2024</h4>
+                <div class="mc-meta">Syllabus · Latest Updated</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">RRB</span>
+              <span class="mc-tag">NTPC</span>
+              <span class="mc-tag">Syllabus</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 9,130 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="upsc" data-type="notes" data-text="upsc polity laxmikanth notes">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(59,130,246,0.1)">📘</div>
+              <div class="mc-info">
+                <h4>UPSC Polity — Laxmikanth Summary</h4>
+                <div class="mc-meta">Study Notes · Chapter Wise</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">UPSC</span>
+              <span class="mc-tag">Polity</span>
+              <span class="mc-tag">Notes</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 15,200 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="tnpsc" data-type="model" data-text="tnpsc group 4 model test tamil">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(249,115,22,0.1)">📝</div>
+              <div class="mc-info">
+                <h4>TNPSC Group 4 — Full Model Test</h4>
+                <div class="mc-meta">Model Test · 200 Questions</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">TNPSC</span>
+              <span class="mc-tag">Group 4</span>
+              <span class="mc-tag">Model Test</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 7,890 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="gate" data-type="qp" data-text="gate ece previous year 2023">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(236,72,153,0.1)">📄</div>
+              <div class="mc-info">
+                <h4>GATE ECE — Previous Year Paper 2023</h4>
+                <div class="mc-meta">Question Paper · 2023</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">GATE</span>
+              <span class="mc-tag">ECE</span>
+              <span class="mc-tag">2023</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 5,340 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="ssc" data-type="qp" data-text="ssc chsl previous year paper reasoning">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(20,184,166,0.1)">📋</div>
+              <div class="mc-info">
+                <h4>SSC CHSL — Reasoning Paper Set</h4>
+                <div class="mc-meta">Question Paper · Set of 10</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">SSC</span>
+              <span class="mc-tag">CHSL</span>
+              <span class="mc-tag">Reasoning</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 4,600 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="cat" data-type="notes" data-text="cat verbal ability reading comprehension notes">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(139,92,246,0.1)">📘</div>
+              <div class="mc-info">
+                <h4>CAT — Verbal Ability & RC Notes</h4>
+                <div class="mc-meta">Study Notes · 120 Pages</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">CAT</span>
+              <span class="mc-tag">VARC</span>
+              <span class="mc-tag">Notes</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 8,120 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-exam="rrb" data-type="model" data-text="rrb alp assistant loco pilot model test math">
+            <div class="mc-top">
+              <div class="mc-icon" style="background:rgba(245,158,11,0.1)">📝</div>
+              <div class="mc-info">
+                <h4>RRB ALP — Mathematics Model Test</h4>
+                <div class="mc-meta">Model Test · 75 Questions</div>
+              </div>
+            </div>
+            <div class="mc-tags">
+              <span class="mc-tag">RRB</span>
+              <span class="mc-tag">ALP</span>
+              <span class="mc-tag">Math</span>
+            </div>
+            <div class="mc-footer">
+              <span class="dl-count">📥 3,880 downloads</span>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-bookmark" data-bookmarked="false">🔖</button>
+                <button class="btn-dl">⬇ Download</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p id="noResults" style="display:none; color:var(--text2); text-align:center; padding:40px; font-size:15px;">No materials found. Try a different search. 🔍</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>© 2025 PrepVault · Study Material & PDF Repository</p></div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+
+<style>
+.filter-box { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px; margin-bottom:16px; }
+.filter-box h4 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; color:var(--text2); }
+.filter-checks { display:flex; flex-direction:column; gap:10px; }
+.filter-checks label { display:flex; align-items:center; gap:8px; font-size:14px; cursor:pointer; }
+.filter-checks input { accent-color:var(--accent); width:16px; height:16px; }
+.view-btn { padding:8px 14px; border:1.5px solid var(--border); background:var(--surface); border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; color:var(--text2); transition:all 0.2s; }
+.view-btn.active { border-color:var(--accent); color:var(--accent); background:rgba(249,115,22,0.07); }
+</style>
+
+<script>
+function filterMaterials() {
+  const q = document.getElementById('matSearch').value.toLowerCase();
+  const cards = document.querySelectorAll('.material-card');
+  let count = 0;
+  cards.forEach(c => {
+    const text = c.dataset.text || '';
+    const match = text.includes(q) || q === '';
+    c.style.display = match ? 'block' : 'none';
+    if (match) count++;
+  });
+  document.getElementById('countDisplay').textContent = count;
+  document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+}
+function setView(type, btn) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid = document.getElementById('materialsGrid');
+  grid.style.gridTemplateColumns = type === 'list' ? '1fr' : '';
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

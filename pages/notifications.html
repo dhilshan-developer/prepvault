@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications — PrepVault</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-icon">⬡</span><span class="brand-text">Prep<em>Vault</em></span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="exams.html">Exams</a></li>
+      <li><a href="materials.html">Materials</a></li>
+      <li><a href="notifications.html" class="active">Notifications</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a><a href="exams.html">Exams</a>
+    <a href="materials.html">Materials</a><a href="notifications.html">Notifications</a>
+    <a href="login.html">Login</a><a href="register.html">Register</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Exam Notifications</h1>
+    <p>Stay updated with latest exam dates, admit cards, results and syllabus changes.</p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--bg); padding-top:40px;">
+  <div class="container">
+
+    <div class="filter-row">
+      <div class="filter-chip active" onclick="filterNotifs('all', this)">All</div>
+      <div class="filter-chip" onclick="filterNotifs('tnpsc', this)">TNPSC</div>
+      <div class="filter-chip" onclick="filterNotifs('upsc', this)">UPSC</div>
+      <div class="filter-chip" onclick="filterNotifs('gate', this)">GATE</div>
+      <div class="filter-chip" onclick="filterNotifs('ssc', this)">SSC</div>
+      <div class="filter-chip" onclick="filterNotifs('rrb', this)">RRB</div>
+      <div class="filter-chip" onclick="filterNotifs('result', this)">Results</div>
+    </div>
+
+    <div class="notif-list" id="notifList">
+
+      <div class="notif-card" data-cat="tnpsc">
+        <div class="notif-dot new"></div>
+        <div class="notif-body">
+          <h4>TNPSC Group 4 Notification 2025 — Application Open</h4>
+          <p>Tamil Nadu Public Service Commission has released the official notification for Group 4 vacancies. Total 6,244 posts. Online application starts February 1, 2025.</p>
+          <div class="notif-time">🕐 2 hours ago · TNPSC</div>
+        </div>
+        <span class="notif-badge nb-urgent">🔴 Urgent</span>
+      </div>
+
+      <div class="notif-card" data-cat="upsc">
+        <div class="notif-dot new"></div>
+        <div class="notif-body">
+          <h4>UPSC Civil Services Prelims 2025 — Syllabus Released</h4>
+          <p>UPSC has officially released the syllabus and exam calendar for Civil Services Preliminary Examination 2025. Exam scheduled for May 25, 2025.</p>
+          <div class="notif-time">🕐 5 hours ago · UPSC</div>
+        </div>
+        <span class="notif-badge nb-new">🟠 New</span>
+      </div>
+
+      <div class="notif-card" data-cat="gate">
+        <div class="notif-dot new"></div>
+        <div class="notif-body">
+          <h4>GATE 2025 Admit Card Released</h4>
+          <p>GATE 2025 admit cards are now available for download on the official GOAPS portal. Examination dates: February 1, 2, 15 & 16, 2025.</p>
+          <div class="notif-time">🕐 1 day ago · GATE 2025</div>
+        </div>
+        <span class="notif-badge nb-new">🟠 New</span>
+      </div>
+
+      <div class="notif-card" data-cat="ssc">
+        <div class="notif-dot new"></div>
+        <div class="notif-body">
+          <h4>SSC CGL 2024 Tier I Result Declared</h4>
+          <p>Staff Selection Commission has declared the Tier I result for CGL 2024. Candidates who cleared Tier I can download the cutoff marks and qualify list.</p>
+          <div class="notif-time">🕐 2 days ago · SSC</div>
+        </div>
+        <span class="notif-badge nb-info">🔵 Result</span>
+      </div>
+
+      <div class="notif-card" data-cat="rrb">
+        <div class="notif-dot seen"></div>
+        <div class="notif-body">
+          <h4>RRB NTPC 2024 — Application Form Correction Window</h4>
+          <p>Railway Recruitment Board has opened the application correction window for NTPC 2024. Candidates can edit their details from Jan 20 to Jan 28, 2025.</p>
+          <div class="notif-time">🕐 3 days ago · RRB</div>
+        </div>
+        <span class="notif-badge nb-info">🔵 Update</span>
+      </div>
+
+      <div class="notif-card" data-cat="upsc">
+        <div class="notif-dot seen"></div>
+        <div class="notif-body">
+          <h4>UPSC CAPF 2025 Notification Out — 322 Vacancies</h4>
+          <p>UPSC released notification for Central Armed Police Forces (CAPF) 2025 with 322 vacancies for Assistant Commandants. Last date to apply: March 4, 2025.</p>
+          <div class="notif-time">🕐 4 days ago · UPSC</div>
+        </div>
+        <span class="notif-badge nb-new">🟠 New</span>
+      </div>
+
+      <div class="notif-card" data-cat="tnpsc result">
+        <div class="notif-dot seen"></div>
+        <div class="notif-body">
+          <h4>TNPSC Group 2A Final Result 2024 Published</h4>
+          <p>TNPSC has announced the final merit list for Group 2A examination held in 2024. Selected candidates will receive appointment orders within 30 days.</p>
+          <div class="notif-time">🕐 1 week ago · TNPSC</div>
+        </div>
+        <span class="notif-badge nb-info">🔵 Result</span>
+      </div>
+
+      <div class="notif-card" data-cat="ssc">
+        <div class="notif-dot seen"></div>
+        <div class="notif-body">
+          <h4>SSC MTS 2025 Notification — 8,326 Posts</h4>
+          <p>SSC has released the official notification for Multi Tasking Staff (MTS) 2025 with 8,326 vacancies. The exam will be conducted in computer-based mode.</p>
+          <div class="notif-time">🕐 1 week ago · SSC</div>
+        </div>
+        <span class="notif-badge nb-new">🟠 New</span>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <button class="btn-outline" onclick="loadMore()">Load More Notifications</button>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>© 2025 PrepVault · Study Material & PDF Repository</p></div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+
+<script>
+function filterNotifs(cat, el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.notif-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat.includes(cat)) ? 'flex' : 'none';
+  });
+}
+function loadMore() {
+  showToast('All notifications loaded!', '🔔');
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

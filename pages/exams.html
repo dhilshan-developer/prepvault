@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exams — PrepVault</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand"><span class="brand-icon">⬡</span><span class="brand-text">Prep<em>Vault</em></span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="exams.html" class="active">Exams</a></li>
+      <li><a href="materials.html">Materials</a></li>
+      <li><a href="notifications.html">Notifications</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn-ghost">Login</a>
+      <a href="register.html" class="btn-primary">Get Started</a>
+    </div>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a>
+    <a href="exams.html">Exams</a>
+    <a href="materials.html">Materials</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Browse All Exams</h1>
+    <p>Choose your exam and access all study materials, previous papers & notifications.</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Search exams, subjects, topics..." id="examSearch">
+      <button onclick="filterExams()">Search</button>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--bg); padding-top:48px;">
+  <div class="container">
+
+    <!-- Filter -->
+    <div class="filter-row">
+      <div class="filter-chip active" onclick="filterByCategory('all', this)">All Exams</div>
+      <div class="filter-chip" onclick="filterByCategory('state', this)">State Level</div>
+      <div class="filter-chip" onclick="filterByCategory('central', this)">Central Govt</div>
+      <div class="filter-chip" onclick="filterByCategory('entrance', this)">Entrance Tests</div>
+      <div class="filter-chip" onclick="filterByCategory('railway', this)">Railway</div>
+      <div class="filter-chip" onclick="filterByCategory('banking', this)">Banking</div>
+    </div>
+
+    <!-- Exams Detail Grid -->
+    <div class="exams-detail-grid" id="examsGrid">
+
+      <div class="exam-detail-card" data-cat="state">
+        <div class="edc-header" style="--ec:#f97316">
+          <div class="edc-abbr">TNPSC</div>
+          <div class="edc-badge">State Level</div>
+        </div>
+        <div class="edc-body">
+          <h3>Tamil Nadu Public Service Commission</h3>
+          <p>Conducts Group I, II, III, IV exams for state government jobs in Tamil Nadu. Covers GS, Aptitude, Tamil & English.</p>
+          <div class="edc-counts">
+            <span>📄 3,200+ PDFs</span>
+            <span>📝 180 Question Papers</span>
+            <span>🗓️ Next: Group 4 – Mar 2025</span>
+          </div>
+          <a href="materials.html?exam=tnpsc" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="central">
+        <div class="edc-header" style="--ec:#3b82f6">
+          <div class="edc-abbr">UPSC</div>
+          <div class="edc-badge">Central Govt</div>
+        </div>
+        <div class="edc-body">
+          <h3>Union Public Service Commission</h3>
+          <p>India's premier civil service exam. Covers Prelims, Mains, and Interview stages for IAS, IPS, IFS and allied services.</p>
+          <div class="edc-counts">
+            <span>📄 5,800+ PDFs</span>
+            <span>📝 240 Question Papers</span>
+            <span>🗓️ Prelims – May 2025</span>
+          </div>
+          <a href="materials.html?exam=upsc" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="entrance">
+        <div class="edc-header" style="--ec:#10b981">
+          <div class="edc-abbr">TANCET</div>
+          <div class="edc-badge">Entrance Test</div>
+        </div>
+        <div class="edc-body">
+          <h3>Tamil Nadu Common Entrance Test</h3>
+          <p>Gateway to postgraduate programmes (MBA, MCA, ME/M.Tech) in Tamil Nadu's universities and colleges.</p>
+          <div class="edc-counts">
+            <span>📄 1,400+ PDFs</span>
+            <span>📝 85 Question Papers</span>
+            <span>🗓️ Application – Jan 2025</span>
+          </div>
+          <a href="materials.html?exam=tancet" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="entrance">
+        <div class="edc-header" style="--ec:#8b5cf6">
+          <div class="edc-abbr">CAT</div>
+          <div class="edc-badge">Entrance Test</div>
+        </div>
+        <div class="edc-body">
+          <h3>Common Admission Test</h3>
+          <p>National-level MBA entrance exam for admission to IIMs and top management institutions. Tests Verbal, QA, and DILR.</p>
+          <div class="edc-counts">
+            <span>📄 2,100+ PDFs</span>
+            <span>📝 120 Question Papers</span>
+            <span>🗓️ Exam – Nov 2025</span>
+          </div>
+          <a href="materials.html?exam=cat" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="entrance">
+        <div class="edc-header" style="--ec:#ec4899">
+          <div class="edc-abbr">GATE</div>
+          <div class="edc-badge">Entrance Test</div>
+        </div>
+        <div class="edc-body">
+          <h3>Graduate Aptitude Test in Engineering</h3>
+          <p>National exam for M.Tech/PhD admission and PSU recruitment. Covers all engineering branches and sciences.</p>
+          <div class="edc-counts">
+            <span>📄 4,600+ PDFs</span>
+            <span>📝 300 Question Papers</span>
+            <span>🗓️ Exam – Feb 2026</span>
+          </div>
+          <a href="materials.html?exam=gate" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="central">
+        <div class="edc-header" style="--ec:#14b8a6">
+          <div class="edc-abbr">SSC</div>
+          <div class="edc-badge">Central Govt</div>
+        </div>
+        <div class="edc-body">
+          <h3>Staff Selection Commission</h3>
+          <p>Conducts CGL, CHSL, MTS, CPO exams for central government departments. Covers GK, Reasoning, Quant & English.</p>
+          <div class="edc-counts">
+            <span>📄 3,900+ PDFs</span>
+            <span>📝 210 Question Papers</span>
+            <span>🗓️ CGL Tier I – Apr 2025</span>
+          </div>
+          <a href="materials.html?exam=ssc" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="railway">
+        <div class="edc-header" style="--ec:#f59e0b">
+          <div class="edc-abbr">RRB</div>
+          <div class="edc-badge">Railway</div>
+        </div>
+        <div class="edc-body">
+          <h3>Railway Recruitment Board</h3>
+          <p>Recruits for NTPC, Group D, ALP, and JE posts in Indian Railways. Covers Mathematics, GS, Reasoning & Technical.</p>
+          <div class="edc-counts">
+            <span>📄 2,700+ PDFs</span>
+            <span>📝 160 Question Papers</span>
+            <span>🗓️ NTPC – Ongoing</span>
+          </div>
+          <a href="materials.html?exam=rrb" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+      <div class="exam-detail-card" data-cat="banking">
+        <div class="edc-header" style="--ec:#6366f1">
+          <div class="edc-abbr">IBPS</div>
+          <div class="edc-badge">Banking</div>
+        </div>
+        <div class="edc-body">
+          <h3>Institute of Banking Personnel Selection</h3>
+          <p>Conducts PO, Clerk, SO, and RRB Officer exams for public sector banks across India.</p>
+          <div class="edc-counts">
+            <span>📄 2,200+ PDFs</span>
+            <span>📝 140 Question Papers</span>
+            <span>🗓️ PO Prelims – Oct 2025</span>
+          </div>
+          <a href="materials.html?exam=ibps" class="btn-primary" style="margin-top:16px; display:inline-flex;">View Materials</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>© 2025 PrepVault · Study Material & PDF Repository</p></div>
+  </div>
+</footer>
+
+<style>
+.exams-detail-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:22px; }
+.exam-detail-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; overflow:hidden; transition:all 0.28s; }
+.exam-detail-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.edc-header { background:var(--ec,#f97316); padding:22px 24px; display:flex; justify-content:space-between; align-items:center; }
+.edc-abbr { font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:#fff; }
+.edc-badge { background:rgba(255,255,255,0.25); color:#fff; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; }
+.edc-body { padding:22px 24px; }
+.edc-body h3 { margin-bottom:10px; font-size:16px; }
+.edc-body p { font-size:13px; color:var(--text2); line-height:1.6; margin-bottom:14px; }
+.edc-counts { display:flex; flex-direction:column; gap:6px; }
+.edc-counts span { font-size:13px; color:var(--text2); }
+</style>
+
+<script>
+function filterByCategory(cat, el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.exam-detail-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+function filterExams() {
+  const q = document.getElementById('examSearch').value.toLowerCase();
+  document.querySelectorAll('.exam-detail-card').forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+  });
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

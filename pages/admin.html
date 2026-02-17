@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — PrepVault</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="dash-layout">
+
+  <aside class="dash-sidebar">
+    <div class="sidebar-brand">
+      <a href="../index.html" class="brand brand-footer">
+        <span class="brand-icon">⬡</span><span class="brand-text">Prep<em>Vault</em></span>
+      </a>
+      <div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:6px; margin-left:4px;">Admin Panel</div>
+    </div>
+    <div class="sidebar-section">Dashboard</div>
+    <nav class="sidebar-menu">
+      <div class="sidebar-item active" onclick="showSection('overview', this)"><span class="sidebar-icon">📊</span>Overview</div>
+      <div class="sidebar-item" onclick="showSection('analytics', this)"><span class="sidebar-icon">📈</span>Analytics</div>
+    </nav>
+    <div class="sidebar-section">Content</div>
+    <nav class="sidebar-menu">
+      <div class="sidebar-item" onclick="showSection('materials', this)"><span class="sidebar-icon">📚</span>Materials</div>
+      <div class="sidebar-item" onclick="showSection('upload', this)"><span class="sidebar-icon">⬆️</span>Upload PDF</div>
+      <div class="sidebar-item" onclick="showSection('exams', this)"><span class="sidebar-icon">📋</span>Exams & Categories</div>
+    </nav>
+    <div class="sidebar-section">Users</div>
+    <nav class="sidebar-menu">
+      <div class="sidebar-item" onclick="showSection('users', this)"><span class="sidebar-icon">👥</span>Manage Users</div>
+      <div class="sidebar-item" onclick="showSection('permissions', this)"><span class="sidebar-icon">🔐</span>Permissions</div>
+    </nav>
+    <div class="sidebar-section">System</div>
+    <nav class="sidebar-menu">
+      <div class="sidebar-item" onclick="window.location.href='../index.html'"><span class="sidebar-icon">🌐</span>View Site</div>
+      <div class="sidebar-item" onclick="showToast('Logged out', '👋')"><span class="sidebar-icon">🚪</span>Logout</div>
+    </nav>
+  </aside>
+
+  <main class="dash-main">
+
+    <!-- OVERVIEW -->
+    <div id="sec-overview">
+      <div class="dash-header">
+        <div><h2>Admin Overview</h2><p class="dash-subtext">PrepVault platform statistics — updated live</p></div>
+        <button class="btn-primary" onclick="showSection('upload', null)">+ Upload Material</button>
+      </div>
+
+      <div class="stats-row" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+        <div class="stat-box"><div class="si">👥</div><div class="sn">2,14,862</div><div class="sl">Total Users</div></div>
+        <div class="stat-box"><div class="si">📄</div><div class="sn">50,420</div><div class="sl">Total PDFs</div></div>
+        <div class="stat-box"><div class="si">📥</div><div class="sn">8.4M</div><div class="sl">Total Downloads</div></div>
+        <div class="stat-box"><div class="si">📋</div><div class="sn">20</div><div class="sl">Exams Covered</div></div>
+        <div class="stat-box"><div class="si">🔔</div><div class="sn">142</div><div class="sl">Notifications Sent</div></div>
+      </div>
+
+      <!-- Recent Uploads -->
+      <div class="dash-section">
+        <div class="dash-section-head"><h3>Recent Uploads</h3><a class="view-all" onclick="showSection('materials', null)">View all →</a></div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Title</th><th>Exam</th><th>Type</th><th>Downloads</th><th>Uploaded</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>TNPSC Group 4 GS Paper 2024</td><td>TNPSC</td><td>Q. Paper</td><td>1,284</td><td>Feb 13</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn" onclick="showToast('Editing…','✏️')">✏️</button><button class="tbl-btn red" onclick="showToast('Deleted','🗑️')">🗑️</button></td></tr>
+              <tr><td>UPSC Ethics GS Paper 4 Notes</td><td>UPSC</td><td>Notes</td><td>3,892</td><td>Feb 12</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+              <tr><td>GATE 2025 Official Answer Key</td><td>GATE</td><td>Answer Key</td><td>8,140</td><td>Feb 10</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+              <tr><td>SSC CPO Model Test Series</td><td>SSC</td><td>Model Test</td><td>682</td><td>Feb 8</td><td><span class="status-badge sb-pending">Pending</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+              <tr><td>CAT Quant — Advanced Problems</td><td>CAT</td><td>Notes</td><td>0</td><td>Feb 7</td><td><span class="status-badge sb-draft">Draft</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top Downloads -->
+      <div class="dash-section">
+        <div class="dash-section-head"><h3>Top Downloads This Month</h3></div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div class="top-dl-row"><span class="rank">1</span><div><b>UPSC Polity — Laxmikanth Summary</b><p style="font-size:12px;color:var(--text2);">UPSC · Notes</p></div><div class="dl-bar-wrap"><div class="dl-bar" style="width:100%"></div><span>15,200</span></div></div>
+          <div class="top-dl-row"><span class="rank">2</span><div><b>CAT 2022 — Official Question Paper</b><p style="font-size:12px;color:var(--text2);">CAT · Q. Paper</p></div><div class="dl-bar-wrap"><div class="dl-bar" style="width:82%"></div><span>12,440</span></div></div>
+          <div class="top-dl-row"><span class="rank">3</span><div><b>RRB NTPC — Official Syllabus 2024</b><p style="font-size:12px;color:var(--text2);">RRB · Syllabus</p></div><div class="dl-bar-wrap"><div class="dl-bar" style="width:60%"></div><span>9,130</span></div></div>
+          <div class="top-dl-row"><span class="rank">4</span><div><b>UPSC GS Paper 1 — History Notes</b><p style="font-size:12px;color:var(--text2);">UPSC · Notes</p></div><div class="dl-bar-wrap"><div class="dl-bar" style="width:59%"></div><span>8,924</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="sec-upload" style="display:none;">
+      <div class="dash-header"><div><h2>Upload Study Material</h2><p class="dash-subtext">Add new PDFs, notes, and question papers</p></div></div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; max-width:640px;">
+        <div class="form-group"><label>Material Title</label><input type="text" placeholder="e.g. TNPSC Group 2 GS Paper 2024"></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group"><label>Exam</label>
+            <select><option>TNPSC</option><option>UPSC</option><option>TANCET</option><option>GATE</option><option>CAT</option><option>SSC</option><option>RRB</option><option>IBPS</option></select>
+          </div>
+          <div class="form-group"><label>Material Type</label>
+            <select><option>Question Paper</option><option>Study Notes</option><option>Model Test</option><option>Syllabus</option><option>Answer Key</option></select>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group"><label>Subject / Topic</label><input type="text" placeholder="e.g. General Studies"></div>
+          <div class="form-group"><label>Year (if applicable)</label><input type="number" placeholder="2024"></div>
+        </div>
+        <div class="form-group"><label>Description</label>
+          <textarea placeholder="Brief description of the material..." style="width:100%; padding:13px 16px; border:2px solid var(--border); border-radius:12px; font-family:inherit; font-size:14px; resize:vertical; min-height:90px; outline:none;"></textarea>
+        </div>
+        <div class="upload-zone" onclick="showToast('File picker opened…', '📁')" id="uploadZone">
+          <div class="uz-icon">☁️</div>
+          <p><b>Click to upload PDF</b> or drag & drop here</p>
+          <p style="font-size:12px; color:var(--text2); margin-top:4px;">PDF files only · Max 50 MB · Stored on Firebase Storage</p>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:22px;">
+          <button class="btn-primary" onclick="handleUpload()">Upload Material</button>
+          <button class="btn-outline" onclick="showToast('Saved as draft', '💾')">Save Draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- USERS -->
+    <div id="sec-users" style="display:none;">
+      <div class="dash-header"><div><h2>User Management</h2><p class="dash-subtext">2,14,862 registered users</p></div></div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Exam Focus</th><th>Downloads</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td>Rahul Kumar</td><td>rahul@email.com</td><td>TNPSC</td><td>42</td><td>Jan 2025</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">👁</button><button class="tbl-btn red" onclick="showToast('User suspended','⚠️')">⛔</button></td></tr>
+            <tr><td>Priya Sharma</td><td>priya@email.com</td><td>UPSC</td><td>127</td><td>Dec 2024</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">👁</button><button class="tbl-btn red">⛔</button></td></tr>
+            <tr><td>Arjun Patel</td><td>arjun@email.com</td><td>GATE</td><td>88</td><td>Nov 2024</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">👁</button><button class="tbl-btn red">⛔</button></td></tr>
+            <tr><td>Lakshmi R</td><td>lakshmi@email.com</td><td>TNPSC</td><td>16</td><td>Feb 2025</td><td><span class="status-badge sb-pending">New</span></td><td class="tbl-actions"><button class="tbl-btn">👁</button><button class="tbl-btn red">⛔</button></td></tr>
+            <tr><td>Mohammed S</td><td>mohammed@email.com</td><td>SSC</td><td>0</td><td>Feb 2025</td><td><span class="status-badge sb-draft">Inactive</span></td><td class="tbl-actions"><button class="tbl-btn">👁</button><button class="tbl-btn red">⛔</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div id="sec-analytics" style="display:none;">
+      <div class="dash-header"><div><h2>Analytics</h2><p class="dash-subtext">Download trends & usage statistics</p></div></div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="si">📅</div><div class="sn">1,284</div><div class="sl">Downloads Today</div></div>
+        <div class="stat-box"><div class="si">📆</div><div class="sn">38,420</div><div class="sl">This Month</div></div>
+        <div class="stat-box"><div class="si">📈</div><div class="sn">+24%</div><div class="sl">Growth vs Last Month</div></div>
+        <div class="stat-box"><div class="si">🆕</div><div class="sn">1,842</div><div class="sl">New Users This Month</div></div>
+      </div>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px;">
+        <h3 style="margin-bottom:20px;">Downloads by Exam (This Month)</h3>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="bar-row"><span style="width:80px; font-size:13px; font-weight:700;">UPSC</span><div style="flex:1; background:var(--bg); border-radius:8px; height:28px; overflow:hidden;"><div style="width:78%; height:100%; background:linear-gradient(90deg,#3b82f6,#60a5fa); border-radius:8px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:12px; font-weight:700;">12,420</div></div></div>
+          <div class="bar-row"><span style="width:80px; font-size:13px; font-weight:700;">TNPSC</span><div style="flex:1; background:var(--bg); border-radius:8px; height:28px; overflow:hidden;"><div style="width:65%; height:100%; background:linear-gradient(90deg,#f97316,#fb923c); border-radius:8px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:12px; font-weight:700;">9,820</div></div></div>
+          <div class="bar-row"><span style="width:80px; font-size:13px; font-weight:700;">SSC</span><div style="flex:1; background:var(--bg); border-radius:8px; height:28px; overflow:hidden;"><div style="width:48%; height:100%; background:linear-gradient(90deg,#14b8a6,#2dd4bf); border-radius:8px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:12px; font-weight:700;">7,240</div></div></div>
+          <div class="bar-row"><span style="width:80px; font-size:13px; font-weight:700;">GATE</span><div style="flex:1; background:var(--bg); border-radius:8px; height:28px; overflow:hidden;"><div style="width:40%; height:100%; background:linear-gradient(90deg,#ec4899,#f472b6); border-radius:8px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:12px; font-weight:700;">5,880</div></div></div>
+          <div class="bar-row"><span style="width:80px; font-size:13px; font-weight:700;">RRB</span><div style="flex:1; background:var(--bg); border-radius:8px; height:28px; overflow:hidden;"><div style="width:22%; height:100%; background:linear-gradient(90deg,#f59e0b,#fbbf24); border-radius:8px; display:flex; align-items:center; padding-left:12px; color:#fff; font-size:12px; font-weight:700;">3,060</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAMS Management -->
+    <div id="sec-exams" style="display:none;">
+      <div class="dash-header"><div><h2>Exams & Categories</h2><p class="dash-subtext">Manage exam listings and subject categories</p></div><button class="btn-primary" onclick="showToast('Add exam form opened','➕')">+ Add Exam</button></div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Exam</th><th>Full Name</th><th>Category</th><th>PDFs</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><b>TNPSC</b></td><td>Tamil Nadu Public Service Commission</td><td>State Level</td><td>3,200</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+            <tr><td><b>UPSC</b></td><td>Union Public Service Commission</td><td>Central Govt</td><td>5,800</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+            <tr><td><b>GATE</b></td><td>Graduate Aptitude Test in Engineering</td><td>Entrance Test</td><td>4,600</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+            <tr><td><b>SSC</b></td><td>Staff Selection Commission</td><td>Central Govt</td><td>3,900</td><td><span class="status-badge sb-active">Active</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+            <tr><td><b>TANCET</b></td><td>Tamil Nadu Common Entrance Test</td><td>Entrance Test</td><td>1,400</td><td><span class="status-badge sb-pending">Pending</span></td><td class="tbl-actions"><button class="tbl-btn">✏️</button><button class="tbl-btn red">🗑️</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PERMISSIONS -->
+    <div id="sec-permissions" style="display:none;">
+      <div class="dash-header"><div><h2>Permissions</h2><p class="dash-subtext">Manage admin roles and access control</p></div></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px;">
+        <div class="perm-card"><h4>Super Admin</h4><p>Full access to all features, user management, content and system settings.</p><div class="perm-count">1 user</div></div>
+        <div class="perm-card"><h4>Content Admin</h4><p>Can upload, edit, and delete study materials. Cannot manage users or permissions.</p><div class="perm-count">4 users</div></div>
+        <div class="perm-card"><h4>Moderator</h4><p>Can review and approve pending content. Limited access to user reports.</p><div class="perm-count">8 users</div></div>
+        <div class="perm-card perm-add" onclick="showToast('Add role form opened','➕')"><h4>+ Add Role</h4><p>Create a custom permission role with specific access rights.</p></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast"></div>
+
+<style>
+.tbl-actions { display:flex; gap:6px; }
+.tbl-btn { padding:6px 10px; border:1.5px solid var(--border); background:var(--bg); border-radius:8px; cursor:pointer; font-size:14px; transition:all 0.2s; }
+.tbl-btn:hover { border-color:var(--accent); }
+.tbl-btn.red:hover { border-color:#ef4444; }
+.top-dl-row { display:flex; align-items:center; gap:16px; padding:12px 16px; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+.rank { width:28px; height:28px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:13px; font-weight:800; flex-shrink:0; }
+.dl-bar-wrap { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
+.dl-bar { height:8px; border-radius:4px; background:linear-gradient(90deg,var(--accent),#fb923c); }
+.dl-bar-wrap span { font-size:12px; font-weight:700; color:var(--text); white-space:nowrap; }
+.upload-zone {
+  border:2px dashed var(--border); border-radius:14px; padding:36px;
+  text-align:center; cursor:pointer; transition:all 0.25s; margin-top:4px;
+}
+.upload-zone:hover { border-color:var(--accent); background:rgba(249,115,22,0.04); }
+.uz-icon { font-size:40px; margin-bottom:10px; }
+.bar-row { display:flex; align-items:center; gap:16px; }
+.perm-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; }
+.perm-card h4 { font-size:16px; margin-bottom:8px; }
+.perm-card p { font-size:13px; color:var(--text2); line-height:1.5; }
+.perm-count { display:inline-block; margin-top:14px; font-size:12px; font-weight:700; background:rgba(249,115,22,0.1); color:var(--accent); padding:4px 12px; border-radius:20px; }
+.perm-add { border-style:dashed; cursor:pointer; transition:all 0.2s; }
+.perm-add:hover { border-color:var(--accent); }
+</style>
+
+<script>
+function showSection(id, el) {
+  document.querySelectorAll('[id^="sec-"]').forEach(s => s.style.display = 'none');
+  document.getElementById('sec-' + id).style.display = 'block';
+  if (el) {
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+  window.scrollTo({top:0});
+}
+function handleUpload() {
+  showToast('Material uploaded successfully! ✅', '📤');
+  setTimeout(() => showSection('materials', null), 1500);
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

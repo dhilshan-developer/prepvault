@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — PrepVault</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="auth-wrap">
+  <div class="auth-left">
+    <div>
+      <a href="../index.html" class="brand brand-footer" style="margin-bottom:40px; display:inline-flex;">
+        <span class="brand-icon">⬡</span><span class="brand-text">Prep<em>Vault</em></span>
+      </a>
+      <h2 style="margin-top:40px;">Join 2 Lakh+<br>Aspirants Today!</h2>
+      <p style="margin-top:14px;">Create your free account and unlock unlimited access to study materials for TNPSC, UPSC, GATE, CAT, SSC, RRB and more.</p>
+      <div class="auth-features">
+        <div class="auth-feat"><div class="auth-feat-icon">🆓</div>100% Free Registration</div>
+        <div class="auth-feat"><div class="auth-feat-icon">📥</div>Unlimited PDF Downloads</div>
+        <div class="auth-feat"><div class="auth-feat-icon">🔖</div>Save & Bookmark Materials</div>
+        <div class="auth-feat"><div class="auth-feat-icon">🔔</div>Custom Exam Alerts</div>
+      </div>
+    </div>
+    <div style="font-size:12px; color:rgba(255,255,255,0.3);">PrepVault · India's #1 Exam Repository</div>
+  </div>
+
+  <div class="auth-right">
+    <div style="max-width:420px; margin:0 auto; width:100%;">
+      <div class="auth-form-head">
+        <h2>Create Account</h2>
+        <p>Fill in your details to get started for free.</p>
+      </div>
+
+      <form onsubmit="handleRegister(event)">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Rahul" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Kumar" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+
+        <div class="form-group">
+          <label>Preparing For</label>
+          <select required>
+            <option value="">Select your primary exam</option>
+            <option>TNPSC</option>
+            <option>UPSC</option>
+            <option>TANCET</option>
+            <option>GATE</option>
+            <option>CAT</option>
+            <option>SSC</option>
+            <option>RRB</option>
+            <option>Multiple Exams</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div style="position:relative;">
+            <input type="password" id="regPwd" placeholder="Min. 8 characters" required style="padding-right:46px;">
+            <button type="button" onclick="togglePwd('regPwd')" style="position:absolute; right:14px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:18px; color:var(--text2);">👁</button>
+          </div>
+          <div id="pwdStrength" style="margin-top:8px; height:4px; border-radius:4px; background:var(--border); overflow:hidden;">
+            <div id="pwdBar" style="height:100%; width:0%; background:var(--accent); transition:all 0.3s; border-radius:4px;"></div>
+          </div>
+          <p id="pwdMsg" style="font-size:11px; color:var(--text2); margin-top:4px;"></p>
+        </div>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="regPwd2" placeholder="Re-enter password" required>
+        </div>
+
+        <label style="display:flex; align-items:flex-start; gap:10px; font-size:13px; cursor:pointer; margin-bottom:22px; line-height:1.5;">
+          <input type="checkbox" required style="accent-color:var(--accent); margin-top:2px; flex-shrink:0;">
+          I agree to the <a href="#" style="color:var(--accent); margin:0 4px;">Terms of Service</a> and <a href="#" style="color:var(--accent);">Privacy Policy</a>
+        </label>
+
+        <button type="submit" class="form-submit">Create Free Account</button>
+      </form>
+
+      <div class="form-alt">Already have an account? <a href="login.html">Sign in →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast"></div>
+
+<script>
+document.getElementById('regPwd').addEventListener('input', function() {
+  const v = this.value; const bar = document.getElementById('pwdBar'); const msg = document.getElementById('pwdMsg');
+  let strength = 0; let label = '';
+  if (v.length >= 8) strength++;
+  if (/[A-Z]/.test(v)) strength++;
+  if (/[0-9]/.test(v)) strength++;
+  if (/[^A-Za-z0-9]/.test(v)) strength++;
+  const colors = ['#ef4444','#f97316','#eab308','#22c55e'];
+  const labels = ['Weak','Fair','Good','Strong'];
+  bar.style.width = (strength * 25) + '%';
+  bar.style.background = colors[strength - 1] || '#e5e7eb';
+  msg.textContent = strength > 0 ? `Password strength: ${labels[strength-1]}` : '';
+});
+
+function handleRegister(e) {
+  e.preventDefault();
+  const p1 = document.getElementById('regPwd').value;
+  const p2 = document.getElementById('regPwd2').value;
+  if (p1 !== p2) { showToast('Passwords do not match!', '❌'); return; }
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Creating account...'; btn.disabled = true;
+  setTimeout(() => {
+    showToast('Account created! Welcome to PrepVault 🎉', '✅');
+    setTimeout(() => window.location.href = 'dashboard.html', 1400);
+  }, 1200);
+}
+function togglePwd(id) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>
